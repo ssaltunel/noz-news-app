@@ -1,0 +1,19 @@
+import React from 'react';
+
+export default function NewsDetail({ news }) {
+  if (!news) {
+    return (
+      <div className="w-2/3 p-6">
+        <p>Haber seçiniz</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-2/3 p-6 h-screen overflow-y-auto">
+      <h1 className="text-2xl font-bold mb-4">{news.title}</h1>
+      {news.image && <img src={news.image} alt="" className="mb-4 max-h-64 object-cover" />}
+      <p>{news.content}</p>
+    </div>
+  );
+}

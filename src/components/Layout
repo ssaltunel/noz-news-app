@@ -1,0 +1,23 @@
+import React, { useState, useEffect } from 'react';
+import NewsList from './NewsList';
+import NewsDetail from './NewsDetail';
+
+export default function Layout() {
+  const [news, setNews] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null);
+
+  useEffect(() => {
+    // Örnek RSS API çağrısı, haberleri alıp state'e koyuyoruz
+    fetch('/api/rss') // kendi backend'in olabilir veya mock data
+      .then((res) => res.json())
+      .then((data) => setNews(data.items))
+      .catch(() => setNews([]));
+  }, []);
+
+  return (
+    <div className="flex">
+      <NewsList news={news} onSelect={setSelectedNews} />
+      <NewsDetail news={selectedNews} />
+    </div>
+  );
+}
