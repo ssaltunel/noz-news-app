@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ChatAssistant from './ChatAssistant';
 
 function App() {
   const [news, setNews] = useState([]);
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="flex h-screen">
+      {/* Sidebar - News List */}
       <aside className="w-1/3 overflow-auto border-r border-gray-300 p-4">
         {news.map((item, index) => (
           <div
@@ -38,6 +40,7 @@ function App() {
         ))}
       </aside>
 
+      {/* Main Content */}
       <main className="flex-1 p-6 overflow-auto">
         {selectedNews ? (
           <>
@@ -50,6 +53,11 @@ function App() {
               />
             )}
             <p>{selectedNews.content}</p>
+
+            {/* Chat Assistant under the article */}
+            <div className="mt-8">
+              <ChatAssistant selectedNews={selectedNews} />
+            </div>
           </>
         ) : (
           <p>Haber seçiniz</p>
