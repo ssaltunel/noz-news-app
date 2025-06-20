@@ -4,7 +4,7 @@ export default function NewsDetail({ news }) {
   if (!news) {
     return (
       <div className="w-2/3 p-6">
-        <p>Haber seçiniz</p>
+        <p>Wähle eine Nachricht aus</p>
       </div>
     );
   }
